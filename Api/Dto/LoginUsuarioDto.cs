@@ -4,9 +4,9 @@ namespace Api.Dto
 {
     public class LoginUsuarioDto
     {
-        [Required]
+        [Required(ErrorMessage="O nome do usuário é obrigatório",AllowEmptyStrings=false)]
         public string NomeUsuario { get; set; }
-        [Required]
+        [Required(ErrorMessage="A senha é obrigatório",AllowEmptyStrings=false)]
         public string Senha { get; set; }
     }
 

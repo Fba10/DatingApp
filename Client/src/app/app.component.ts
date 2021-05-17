@@ -1,6 +1,9 @@
+import { Usuario } from './models/usuario';
+import { ContaService } from './services/conta.service';
 
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-root',
@@ -10,25 +13,18 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'Client';
   usuarios: any;
-  /**
-   *
-   */
-  constructor(private http: HttpClient) {}
-  // 
+  localSt: any;
+
+  constructor(private http: HttpClient, private conta: ContaService) {}
+
   ngOnInit() {
-    this.getUsurios();
+    this.setCorrentUser();
   }
 
-
-   getUsurios() {
-    this.http.get('https://localhost:5001/api/usuarios').subscribe(resposta => {
-     this.usuarios = resposta;
-   },error =>{
-     console.log(error);
-   })
+  setCorrentUser() {
+    this.localSt = localStorage.getItem('user');
+    const user: Usuario = JSON.parse(this.localSt);
+    this.conta.setCurrentUser(user);
 
   }
-
-
-
 }

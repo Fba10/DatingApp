@@ -1,0 +1,14 @@
+<h4>Erro interno no Servidor, atualise a página.</h4>
+<ng-container *ngIf="error">
+  <h5 class="text-danger">Erro: {{error.message}}</h5>
+  <p class="font-weitgth-bols">Note:Caso não corrija, entrar em contato com o suporte.</p>
+  <p>O quê fazer?</p>
+  <ol>
+    <li>Abra o especionar código no navegador.</li>
+    <li>Clique na aba Network.</li>
+    <li>Cheque a resposta com o erro.</li>
+    <li>Verifique o endereço da página está correto.</li>
+  </ol>
+  <code class="m5" style="background-color: whitesmoke;">{{error.details}}</code>
+</ng-container>
+

@@ -20,8 +20,8 @@ export class FormRegistrarComponent implements OnInit {
     this.conta.registrar(this.model).subscribe(resposta => {
       console.log(resposta);
       this.cancelar();
-    }, erro => {
-      this.toasts.error(erro.error);
+    }, error => {
+      this.toasts.error(error);
     });
   }
 

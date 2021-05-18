@@ -14,6 +14,9 @@
             <a class="nav-link"routerLink="/mensagens"routerLinkActive="active">Mensagens</a>
           </li>
         </ng-container>
+        <li class="nav-item">
+          <a class="nav-link"routerLink="/erros"routerLinkActive="active">Erros</a>
+        </li>
       </ul>
       <div class="btn-group" *ngIf="(conta.correntUser$ | async) as user" dropdown>
         <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
@@ -30,9 +33,11 @@
       </div>
     </div>
       <form #loginForm="ngForm" *ngIf="(conta.correntUser$ | async) == null" class="d-flex" (ngSubmit)="login()">
-        <input name="nomeUsuario" [(ngModel)]="model.nomeUsuario" class="form-control me-2" type="search" placeholder="Nome do Usuário">
-        <input name="senha" [(ngModel)]="model.senha" class="form-control me-2" type="password" placeholder="Senha">
-        <button class="btn btn-outline-success" type="submit">Login</button>
+        <input name="nomeUsuario" [(ngModel)]="model.nomeUsuario"
+         class="form-control me-2" type="search" placeholder="Nome do Usuário"  #nomeUsuario>
+        <input name="senha" [(ngModel)]="model.senha"
+         class="form-control me-2" type="password" placeholder="Senha" #senha>
+        <button class="btn btn-success" type="submit" [disabled]="(nomeUsuario.value.length === 0 || senha.value.length === 0) " >Login</button>
       </form>
   </div>
 </nav>

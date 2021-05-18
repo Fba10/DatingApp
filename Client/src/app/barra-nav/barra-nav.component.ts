@@ -1,4 +1,4 @@
-import { map, take } from 'rxjs/operators';
+
 import { Router } from '@angular/router';
 import { Usuario } from './../models/usuario';
 import { ContaService } from './../services/conta.service';
@@ -28,9 +28,6 @@ export class BarraNavComponent implements OnInit {
   login() {
     this.conta.login(this.model).subscribe(res => {
       this.rotas.navigateByUrl('/membros');
-    }, erro => {
-      this.rotas.navigateByUrl('/');
-      this.toasts.error(erro.err);
     });
   }
 

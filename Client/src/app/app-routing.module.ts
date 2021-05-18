@@ -1,3 +1,6 @@
+import { ServerErrorComponent } from './error/server-error/server-error.component';
+import { NotFoundComponent } from './error/not-found/not-found.component';
+import { TesteErrosComponent } from './error/teste-erros/teste-erros.component';
 import { MessagensComponent } from './messagens/messagens.component';
 import { ListasComponent } from './listas/listas.component';
 import { ListaMembroComponent } from './membros/lista-membro/lista-membro.component';
@@ -14,12 +17,15 @@ const routes: Routes = [
    runGuardsAndResolvers: 'always',
    canActivate: [AuthGuard],
   children: [
-  {path: 'membros', component: ListaMembroComponent, canActivate: [AuthGuard]},
+  {path: 'membros', component: ListaMembroComponent},
   {path: 'membros/:id', component: DetalhesMembroComponent},
   {path: 'listas', component: ListasComponent},
   {path: 'mensagens', component: MessagensComponent},
-  ]},
 
+  ]},
+  {path: 'erros', component: TesteErrosComponent},
+  {path: 'server-error', component: ServerErrorComponent},
+  {path: 'not-found', component: NotFoundComponent},
   {path: '**', component: HomeComponent, pathMatch: 'full'}
 
 ];
